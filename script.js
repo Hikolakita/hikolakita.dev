@@ -57,12 +57,20 @@ function formatMailto(form) {
     form.action = `mailto:ulysse_rules@icloud.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 }
 
-document.querySelectorAll('nav a').forEach(anchor => {
+document.querySelectorAll('nav a, .nav-bar-container a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetID = this.getAttribute('href').substring(1);
-        document.getElementById(targetID).scrollIntoView({
-            behavior: 'smooth'
-        });
+        e.preventDefault();  // Empêche le comportement par défaut du lien
+        const targetID = this.getAttribute('href').substring(1);  // Récupère l'ID de l'élément cible
+        const targetElement = document.getElementById(targetID);  // Trouve l'élément cible dans le DOM
+        
+        if (targetElement) {
+            // Si l'élément cible existe, scrolle vers cet élément de manière fluide
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        } else {
+            console.warn(`Element with ID ${targetID} not found.`);  // Affiche un avertissement si l'élément cible n'existe pas
+        }
     });
 });
+
