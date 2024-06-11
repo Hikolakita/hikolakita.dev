@@ -53,6 +53,16 @@ function formatMailto(form) {
     const subject = form['Contact-Email'].value;
     const message = form['Contact-Message'].value;
 
-    const emailBody = `De la part de ${name},\n\n${message}`;
+    const emailBody = `From ${name},\n\n${message}`;
     form.action = `mailto:ulysse_rules@icloud.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
 }
+
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetID = this.getAttribute('href').substring(1);
+    document.getElementById(targetID).scrollIntoView({
+    behavior: 'smooth'
+    });
+});
+});
