@@ -768,7 +768,6 @@ progress {
     cursor: pointer;
     min-width: 250px;
     transition: 0.75s;
-    background-image: url("Weather-App.png");
     background-size: cover;
     background-position: center;
     opacity: 1;
